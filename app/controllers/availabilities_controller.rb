@@ -16,7 +16,7 @@ class AvailabilitiesController < ApplicationController
   # POST /availabilities
   def create
     @availability = Availability.new(availability_params)
-
+    @availability.duration = @availability.end_time - @availability.start_time
     if @availability.save
       render json: @availability, status: :created, location: @availability
     else
