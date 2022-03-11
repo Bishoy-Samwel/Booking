@@ -80,9 +80,25 @@ The aim of this project is to provide a RESTful API that will help manage connec
   ```
 
 ### API Documentation
+- link (Coming soon)
 
-- Coming soon
+# Main Endpoints
+`POST` request to `/students/?name=Spike`:
+- This will create new student with name Spike
 
+`POST` request to `/teachers/?name=Max`:
+- This will create new teacher with name Max
+
+`POST` request to `/lessons/?name=Physics&duration=3`:
+- This will create new teacher with name Art, and 3 hours duration
+
+`POST` request to `/availabilities/?teacher_id=1&start_time=2022-10-04 6:00:00&end_time=2022-10-04 10:00:00`:
+- This will create new available time slot for teacher with id 1, with start_time=2022-10-04 6:00:00, and end_time=2022-10-04 10:00:00 and 4 hours duration
+
+`POST` request to `/sessions/?lesson_id=1&student_id=1`:
+- This will check if there is any available teacher for a duration of lesson with id 1, 
+- If the teacher is found it will book a new session with earliest start_time.
+- Modify the availaility time of this teacher when the session is booked.
 ## Contributing
 
 Contributions, issues, and feature requests are welcome!
