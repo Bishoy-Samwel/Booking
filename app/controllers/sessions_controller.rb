@@ -18,12 +18,13 @@ class SessionsController < ApplicationController
     @session = Session.new(session_params)
     lDuration = Lesson.find(@session.lesson_id).duration
     availability = Availability.where("duration >= ?", lDuration)[0]    
+    @session.duration = lDuration;
     if availability
       @session.teacher_id = availability.teacher_id
-    end    
-    if @session.save
       @session.start_time = availability.start_time
       @session.end_time =  @session.start_time + (lDuration*60*60)
+    end    
+    if @session.save
       newStart_time = availability.start_time +  (lDuration*60*60);
       availability.update(start_time:newStart_time)
       availability.update(duration: (availability.end_time - availability.start_time)/(60*60) )
